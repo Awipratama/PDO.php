@@ -35,7 +35,7 @@ class DB
     }
     public function insert($nama_barang, $stok, $harga_barang, $tgl_masuk) {
         try {
-            $sql = "INSERT INTO tbl_barang (nama_barang, stok, harga_barang, tgl_masuk) VALUES (?, ?, ?, ?)";
+            $sql = "INSERT INTO transaksi (nama_barang, stok, harga_barang, tgl_masuk) VALUES (?, ?, ?, ?)";
             $stmt = $this->pdo->prepare($sql);
             $stmt->execute([$nama_barang, $stok, $harga_barang, $tgl_masuk]);
             return true;
@@ -46,7 +46,7 @@ class DB
     }
     public function update($id_barang, $nama_barang, $stok, $harga_barang, $tgl_masuk) {
         try {
-            $sql = 'UPDATE tbl_barang SET nama_barang = ?, stok = ?, harga_barang = ?, tgl_masuk = ? WHERE id_barang = ?';
+            $sql = 'UPDATE transaksi SET nama_barang = ?, stok = ?, harga_barang = ?, tgl_masuk = ? WHERE id_barang = ?';
             $stmt = $this->pdo->prepare($sql);
             $stmt->execute([$nama_barang, $stok, $harga_barang, $tgl_masuk, $id_barang]);
         } catch (PDOException $e) {
@@ -55,7 +55,7 @@ class DB
     }
     public function delete($id_barang) {
         try {
-            $sql = 'DELETE FROM tbl_barang WHERE id_barang = ?';
+            $sql = 'DELETE FROM transaksi WHERE id_barang = ?';
             $stmt = $this->pdo->prepare($sql);
             $stmt->execute([$id_barang]);
         } catch (PDOException $e) {
@@ -72,7 +72,7 @@ class DB
     }
     public function getById($id_barang) {
         try {
-            $sql = "SELECT * FROM tbl_barang WHERE id_barang = ?";
+            $sql = "SELECT * FROM transaksi WHERE id_barang = ?";
             $stmt = $this->pdo->prepare($sql);
             $stmt->execute([$id_barang]);
             return $stmt->fetch(PDO::FETCH_ASSOC);

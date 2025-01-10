@@ -3,12 +3,12 @@ require_once('DB.php');
 
 $koneksi = new DB($host, $user, $pass, $db);
 
-$id_barang = $_GET['id'];
+$id_barang = $_GET['nim'];
 
 $data_barang = $koneksi->getById($id_barang);
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $id_barang = $_POST['id'];
+    $id_barang = $_POST['nim'];
     $nama_barang = $_POST['nama'];
     $stok = $_POST['stok'];
     $harga_barang = $_POST['harga'];

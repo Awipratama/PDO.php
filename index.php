@@ -20,14 +20,15 @@ require_once('DB.php');
                 <table class="table table-hover table-bordered" style="margin-top: 10px">
                     <tr class="success">
                         <th width="50px">No</th>
+                        <th>Nama</th>
                         <th>Nama Barang</th>
-                        <th>Stok</th>
                         <th>Harga Barang</th>
-                        <th>Tanggal Masuk</th>
+                        <th>Alamat</th>
+                        <th>Telpon</th>
                         <th style="text-align: center;">Actions</th>
                     </tr>
                     <?php
-                    $sql = "SELECT * FROM tbl_barang";
+                    $sql = "SELECT * FROM transaksi";
                     $row = $koneksi->query($sql);
                     $hasil = $row->fetchAll();
                     $a = 1;
@@ -35,15 +36,16 @@ require_once('DB.php');
                         ?>
                         <tr>
                             <td><?php echo $a ?></td>
-                            <td><?php echo $isi['nama_barang'] ?></td>
-                            <td><?php echo $isi['stok']; ?></td>
+                            <td><?php echo $isi['nama'] ?></td>
+                            <td><?php echo $isi['nama_barang']; ?></td>
                             <td><?php echo $isi['harga_barang']; ?></td>
-                            <td><?php echo $isi['tgl_masuk']; ?></td>
+                            <td><?php echo $isi['alamat']; ?></td>
+                            <td><?php echo $isi['telp']; ?></td>
                             <td style="text-align: center;">
-                                <a href="update.php?id=<?php echo $isi['id_barang']; ?>" class="btn btn-success">
+                                <a href="update.php?id=<?php echo $isi['nim']; ?>" class="btn btn-success">
                                     <span class="fa fa-edit"></span></a>
                                 <a onclick="return confirm('Apakah yakin data akan di hapus?')"
-                                    href="delete.php?id=<?php echo $isi['id_barang']; ?>" class="btn btn-danger"><span
+                                    href="delete.php?id=<?php echo $isi['nim']; ?>" class="btn btn-danger"><span
                                         class="fa fa-trash"></span></a>
                             </td>
                         </tr>
